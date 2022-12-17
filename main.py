@@ -1,7 +1,12 @@
-from content.wwr import extract_wwr_jobs
+from selenium import webdriver
+from config.options import options
 
-print("\n검색어를 입력하시오:\n")
-keyword = input().rstrip()
 
-jobs = extract_wwr_jobs(keyword)
-print(*jobs, sep="\n\n")
+base_url = "https://kr.indeed.com/jobs?q="
+keyword = "python"
+
+browser = webdriver.Chrome(options=options)
+browser.get(f"{base_url}{keyword}")
+
+print(browser.page_source)
+browser.save_screenshot("success.png")
