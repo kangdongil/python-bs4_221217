@@ -4,9 +4,9 @@ from bs4 import BeautifulSoup
 
 def extract_wwr_jobs(keyword):
     base_url = "https://weworkremotely.com/remote-jobs/search?term="
-    search_term = "python"
 
-    response = requests.get(f"{base_url}{search_term}")
+    print("\n", f"WWR에서 {keyword} 직업 검색을 시작합니다..")
+    response = requests.get(f"{base_url}{keyword}")
     if response.status_code != 200:
         print("해당 사이트를 Request하는데 실패하였습니다.")
         return
@@ -28,4 +28,6 @@ def extract_wwr_jobs(keyword):
                 "position": position.string,
             }
             results.append(job_data)
+
+    print("\n", f"WWR에서 {keyword} 직업 {len(results)}개를 발견하였습니다.")
     return results
