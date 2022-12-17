@@ -13,4 +13,9 @@ else:
     for job in jobs:
         posts = job.find_all("li")[:-1]
         for post in posts:
-            print(post, "\n")
+            anchor = post.find_all("a")[1]
+            position = post.find("span", class_="title")
+            link = anchor["href"]
+            company, _, region = anchor.find_all("span", class_="company")
+            print(position, link, company, region, sep="\n")
+            print("\n")
