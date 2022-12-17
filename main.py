@@ -28,16 +28,26 @@ def parse_job_data(soup):
 
 
 def extract_indeed_jobs():
+
     base_url = "https://kr.indeed.com/jobs"
     keyword = "python"
+    results = []
 
     browser = webdriver.Chrome(options=options)
-    browser.get(f"{base_url}?q={keyword}")
-    soup = BeautifulSoup(browser.page_source, "html.parser")
 
-    results = parse_job_data(soup)
+    for page in range(5):
+        request_url = f"{base_url}?q={keyword}&start={page*10}"
+        print(f"Requesting {request_url}")
+
+        browser.get(request_url)
+        soup = BeautifulSoup(browser.page_source, "html.parser")
+        result = parse_job_data(soup)
+        results += result
+
     for result in results:
         print(result, "\n")
+
+    print(f"{keyword} 직업이 모두 {len(results)}개 발견되었습니다.", "\n")
 
 
 extract_indeed_jobs()
