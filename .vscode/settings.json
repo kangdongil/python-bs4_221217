@@ -1,0 +1,33 @@
+{
+    "files.exclude": {
+        "**/__pycache__": true,
+        ".prettierignore": true,
+        "LICENSE": true,
+        "*.nix": true,
+        ".envrc": true,
+        "venv/": true,
+    },
+    "workbench.colorCustomizations": {
+        "terminal.findMatchBackground": "#5e6370",
+        "terminal.findMatchBorder": "#5e6370",
+        "terminal.findMatchHighlightBackground": "#5e6370",
+        "terminal.findMatchHighlightBorder": "#5e6370",
+        "terminalOverviewRuler.findMatchForeground": "#5e6370",
+    },
+    "editor.formatOnSave": true,
+    "python.languageServer": "None",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Args": ["--max-line-length=88", "--ignore=F401,E402"],
+    "python.formatting.provider": "black",
+    "[python]": {
+        "editor.defaultFormatter": null
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.executorMap": {
+        "python": "poetry run python -u",
+    },
+}

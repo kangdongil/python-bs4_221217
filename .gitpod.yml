@@ -1,0 +1,16 @@
+tasks:
+  - init: |
+      direnv allow
+      mkdir -p /home/gitpod/.config/nix &&
+      echo 'sandbox = false' >> /home/gitpod/.config/nix/nix.conf
+    command: |
+      poetry update
+      clear && echo -e "\033[0;32m # \033[0;33m파이썬 코드 실행하는 법\n\n\033[0;0m우상측 재생 버튼(▶)을 누르면 CodeRunner가 실행됩니다\n\n\033[0;32m # \033[0;33m패키지 설치하는 법\n\n\033[0;34mPoetry\033[0;0m에서 파이썬 패키지를 관리하고 싶다면 콘솔에 다음과 같이 명령하세요.\n
+      \033[0;36mpoetry add [패키지명]
+      poetry remove [패키지명]
+      "
+
+vscode:
+  extensions:
+    - bbenoist.Nix
+    - formulahendry.code-runner
