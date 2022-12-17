@@ -7,13 +7,15 @@ os.system("clear")
 print("\n검색어를 입력하시오:\n")
 keyword = input().rstrip()
 
+
 wwr = extract_wwr_jobs(keyword)
 indeed = extract_indeed_jobs(keyword)
-
 jobs = wwr + indeed
 
-print("\n", "---- 검 색 결 과 ----")
-for job in jobs:
-    print(job, "\n")
+file = open(f"{keyword}.csv", "w")
+file.write("POSITION,COMPANY,LOCATION,LINK\n")
 
-print("\n", f"{keyword} 직업을 모두 {len(jobs)}개 발견되었습니다.")
+for job in jobs:
+    file.write(f"{job['position']},{job['company']},{job['location']},{job['link']}\n")
+
+file.close()
