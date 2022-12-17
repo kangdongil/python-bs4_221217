@@ -9,4 +9,8 @@ if response.status_code != 200:
     print("해당 사이트를 Request하는데 실패하였습니다.")
 else:
     soup = BeautifulSoup(response.text, "html.parser")
-    print(soup.find_all("section", class_="jobs"))
+    jobs = soup.find_all("section", class_="jobs")
+    for job in jobs:
+        posts = job.find_all("li")[:-1]
+        for post in posts:
+            print(post, "\n")
