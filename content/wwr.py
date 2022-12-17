@@ -23,9 +23,9 @@ def extract_wwr_jobs(keyword):
             company, _, location = anchor.find_all("span", class_="company")
             job_data = {
                 "link": f"https://weworkremotely.com{link}",
-                "company": company.string,
-                "location": location.string,
-                "position": position.string,
+                "company": company.string.replace(",", " "),
+                "location": location.string.replace(",", " "),
+                "position": position.string.replace(",", " "),
             }
             results.append(job_data)
 

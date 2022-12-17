@@ -36,9 +36,9 @@ def parse_job_data(soup):
         location = job.find("div", class_="companyLocation")
         job_data = {
             "link": f"https://kr.indeed.com{link}",
-            "company": company.string,
-            "location": location.string,
-            "position": position.string,
+            "company": company.string.replace(",", " "),
+            "location": location.string.replace(",", " "),
+            "position": position.string.replace(",", " "),
         }
         results.append(job_data)
     return results
